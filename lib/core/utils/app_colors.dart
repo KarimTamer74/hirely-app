@@ -9,6 +9,9 @@ class AppColors {
   static const Color violetBlueColor = Color(0xFF8687E7);
   static const Color darkGray = Color(0xFF363636);
   static const Color lightGray = Color(0xFFB7B7B7);
+  static const Color green = Colors.green;
+  static const Color red = Colors.red;
+  static const Color yellow = Colors.yellow;
 
   static const Color dividerColor = Color(0xff979797);
 
