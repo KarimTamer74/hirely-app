@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hirely/core/helper/enums.dart';
-import 'package:hirely/core/network/job_model.dart';
-import 'package:hirely/core/network/repo.dart';
+import 'package:hirely/core/data/models/job_model/job_model.dart';
+import 'package:hirely/core/data/repo/repo.dart';
 
 part 'jobs_state.dart';
 
@@ -84,12 +84,12 @@ class JobsCubit extends Cubit<JobsState> {
     emit(JobLoading());
 
     final job = JobModel(
-      title: title ?? '',
-      company: company ?? '',
-      location: location,
+      title: title ?? 'ffffffff',
+      company: company ?? 'fffff',
+      location: location ?? 'ffffff',
       jobMode: jobMode ?? JobMode.onSite,
       jobType: jobType ?? JobType.fullTime,
-      postLink: postLink,
+      postLink: postLink ?? 'eee',
       date: date,
       notes: notes,
       tags: tags,
