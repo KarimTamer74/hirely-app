@@ -1,13 +1,10 @@
-import 'package:hirely/core/constants/app_constants.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiUrl {
-  static const String baseUrl = AppConstants.supabaseUrl;
+  // Base values from .env
+  static final String baseUrl = dotenv.env['SUPABASE_URL'] ?? '';
+  static final String supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'] ?? '';
 
-  static const String supabaseAnonKey = AppConstants.supabaseAnonKey;
-
-  // Base API
-  static const String baseApi = "$baseUrl/rest/v1";
-
-  // Table Endpoints
-  static const String applications = "$baseApi/applications";
+  // REST API base endpoint
+  static String get baseApi => "$baseUrl/rest/v1";
 }
