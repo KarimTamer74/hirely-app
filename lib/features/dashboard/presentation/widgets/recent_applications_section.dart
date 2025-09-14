@@ -37,7 +37,8 @@ class RecentApplicationsSection extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   log("See All Clicked");
-                  Navigator.pushNamed(context, Routes.mainView, arguments: 2);
+                  Navigator.pushReplacementNamed(context, Routes.mainView,
+                      arguments: 2);
                 },
                 child: Text(
                   AppStrings.seeAll,

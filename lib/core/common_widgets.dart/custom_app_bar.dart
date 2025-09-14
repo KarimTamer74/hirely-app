@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/app_styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -8,43 +9,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.leading,
     this.actions,
+    this.centerTitle = true,
   });
+
   final String? title;
   final Widget? leading;
-  final Widget? actions;
+  final List<Widget>? actions;
+  final bool centerTitle;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title ?? '', style: AppStyles.textStyleBold20),
+      backgroundColor: AppColors.white,
       centerTitle: true,
-      // leading: leading ??
-      //     IconButton(
-      //         padding: EdgeInsets.only(left: 10),
-      //         onPressed: () {
-      //           // context.isDarkMode
-      //           //     ? BlocProvider.of<ThemeCubit>(context)
-      //           //         .changeTheme(ThemeMode.light)
-      //           //     : BlocProvider.of<ThemeCubit>(context)
-      //           //         .changeTheme(ThemeMode.dark);
-      //         },
-      //         style: IconButton.styleFrom(),
-      //         icon: Icon(
-      //           context.isDarkMode
-      //               ? Icons.dark_mode_outlined
-      //               : Icons.light_mode_outlined,
-      //           size: 30.sp,
-      //         )),
-      // actions: [
-      //   Padding(
-      //     padding: const EdgeInsets.only(right: 10.0),
-      //     child: actions ??
-      //         CircleAvatar(
-      //           backgroundImage: AssetImage(AppImages.userPhoto),
-      //           backgroundColor: AppColors.white,
-      //           radius: 20.r,
-      //         ),
-      //   )
-      // ],
+      surfaceTintColor: AppColors.white,
+      elevation: 4,
+      shadowColor: Colors.black.withOpacity(0.2),
+      title: Text(
+        title ?? '',
+        style: AppStyles.textStyleBold20.copyWith(
+          color: Color(0xFF1A237E),
+          fontSize: 20.sp,
+        ),
+      ),
+      actions: actions,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(16),
+        ),
+      ),
     );
   }
 

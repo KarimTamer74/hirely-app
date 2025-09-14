@@ -23,10 +23,10 @@ class _MainViewState extends State<MainView> {
     _currentPageIndex = widget.initialIndex;
   }
 
-  final List<TabItem> _navBarItems = [
-    const TabItem(icon: Icons.dashboard, title: AppStrings.dashboard),
-    const TabItem(icon: Icons.add, title: AppStrings.add),
-    const TabItem(icon: Icons.description, title: AppStrings.applications)
+  final List<TabItem> _navBarItems = const [
+    TabItem(icon: Icons.dashboard, title: AppStrings.dashboard),
+    TabItem(icon: Icons.add, title: AppStrings.add),
+    TabItem(icon: Icons.description_outlined, title: AppStrings.applications),
   ];
 
   void _onTabSelected(int index) {
@@ -48,14 +48,13 @@ class _MainViewState extends State<MainView> {
     return Scaffold(
       body: getBottomNavigationBarBody()[_currentPageIndex],
       bottomNavigationBar: ConvexAppBar(
-        key: ValueKey(_currentPageIndex),
-        height: 55,
+        height: 60,
         curve: Curves.easeInOut,
         style: TabStyle.fixedCircle,
-        color: AppColors.black,
-        backgroundColor: AppColors.white,
-        elevation: 5,
-        activeColor: AppColors.primaryBlueClr,
+        color: AppColors.white,
+        backgroundColor: AppColors.bottomNavBarColor,
+        elevation: 8,
+        activeColor: AppColors.orange,
         items: _navBarItems,
         initialActiveIndex: _currentPageIndex,
         onTap: _onTabSelected,

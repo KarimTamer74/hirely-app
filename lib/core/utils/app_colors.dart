@@ -69,4 +69,5 @@ class AppColors {
   static const Color deepOrange = Color(0xFFEF6C00);
   static const Color darkGreen = Color(0xFF2E7D32);
   static const Color charcoalGray = Color(0xFF424242);
+  static const Color bottomNavBarColor = Color(0xFF1A237E);
 }
