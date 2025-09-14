@@ -9,6 +9,7 @@ class CustomSearchTextField extends StatefulWidget {
     required this.hintText,
     required this.onTextChanged,
   });
+
   final String hintText;
   final ValueChanged<String> onTextChanged;
 
@@ -17,43 +18,61 @@ class CustomSearchTextField extends StatefulWidget {
 }
 
 class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
-  TextEditingController searchController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: searchController,
-      onChanged: (value) {
-        widget.onTextChanged(value);
+      onChanged: widget.onTextChanged,
+      onTapOutside: (event) {
+        FocusScope.of(context).unfocus();
       },
-      style: AppStyles.textStyle20,
-      cursorHeight: 18.h,
+      textInputAction: TextInputAction.search,
+      keyboardType: TextInputType.text,
+      autocorrect: true,
+      enableSuggestions: true,
+      textCapitalization: TextCapitalization.sentences,
+      style: AppStyles.textStyle20.copyWith(fontSize: 16.sp),
+      cursorHeight: 20.h,
       cursorColor: AppColors.bluishClr,
+      maxLines: 1,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 20.w),
         filled: true,
-        fillColor: AppColors.white,
+        fillColor: AppColors.greyShade100,
         hintText: widget.hintText,
-        suffixIcon: Icon(Icons.search, color: AppColors.black),
+        hintStyle: AppStyles.textStyle20.copyWith(
+          color: AppColors.black.withOpacity(0.5),
+          fontSize: 14.sp,
+        ),
+        suffixIcon: searchController.text.isNotEmpty
+            ? IconButton(
+                icon: const Icon(Icons.clear, color: Colors.grey),
+                onPressed: () {
+                  searchController.clear();
+                  widget.onTextChanged('');
+                  setState(() {}); // refresh suffix icon
+                },
+              )
+            : const Icon(Icons.search, color: Colors.grey),
         border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.bluishClr,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(20.r),
+          borderSide: BorderSide(color: AppColors.bluishClr, width: 1.5),
+          borderRadius: BorderRadius.circular(24.r),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.bluishClr,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(20.r),
+          borderSide: BorderSide(color: AppColors.bluishClr, width: 2),
+          borderRadius: BorderRadius.circular(24.r),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.orange,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(20.r),
+          borderSide: BorderSide(color: AppColors.orange, width: 1.5),
+          borderRadius: BorderRadius.circular(24.r),
         ),
       ),
     );
