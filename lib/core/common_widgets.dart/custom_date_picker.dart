@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:hirely/core/utils/app_strings.dart';
+import 'package:hirely/core/utils/app_styles.dart';
+
+// Function to handle date selection
+Future<void> selectDate(BuildContext context, TextEditingController controller,
+    Function(String?) onChanged) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime.now(),
+    lastDate: DateTime(2101),
+  );
+
+  if (pickedDate != null) {
+    final formattedDate = "${pickedDate.toLocal()}".split(' ')[0];
+    controller.text = formattedDate;
+    onChanged(formattedDate);
+  }
+}
+
+class CustomDatePickerField extends StatelessWidget {
+  const CustomDatePickerField({
+    super.key,
+    required this.hintText,
+    required this.onChanged,
+    required this.controller,
+  });
+
+  final String hintText;
+  final Function(String?) onChanged;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        selectDate(context, controller, onChanged);
+      },
+      child: InputDecorator(
+        decoration: InputDecoration(
+            hintText: controller.text.isEmpty ? hintText : null,
+            label: Text(AppStrings.date)),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                controller.text.isEmpty ? hintText : controller.text,
+                style: controller.text.isEmpty
+                    ? AppStyles.textStyle14
+                    : AppStyles.textStyle15,
+              ),
+            ),
+            Icon(Icons.calendar_today),
+          ],
+        ),
+      ),
+    );
+  }
+}
