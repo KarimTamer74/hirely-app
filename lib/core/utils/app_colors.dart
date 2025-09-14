@@ -12,9 +12,10 @@ class AppColors {
   static const Color green = Colors.green;
   static const Color red = Colors.red;
   static const Color yellow = Colors.yellow;
-
+  static const Color orange = Colors.orange;
   static const Color dividerColor = Color(0xff979797);
 
+//* Grey Colors
   static Color greyShade900 = Colors.grey.shade900;
   static Color greyShade800 = Colors.grey.shade800;
   static Color greyShade700 = Colors.grey.shade700;
@@ -25,6 +26,7 @@ class AppColors {
   static Color greyShade200 = Colors.grey.shade200;
   static Color greyShade100 = Colors.grey.shade100;
 
+//* Red Colors
   static Color redShade900 = Colors.red.shade900;
   static Color redShade800 = Colors.red.shade800;
   static Color redShade700 = Colors.red.shade700;
@@ -35,6 +37,18 @@ class AppColors {
   static Color redShade200 = Colors.red.shade200;
   static Color redShade100 = Colors.red.shade100;
   static Color redShade50 = Colors.red.shade50;
+
+//* Yellow Colors
+  static Color yellowShade900 = Colors.yellow.shade900;
+  static Color yellowShade800 = Colors.yellow.shade800;
+  static Color yellowShade700 = Colors.yellow.shade700;
+  static Color yellowShade600 = Colors.yellow.shade600;
+  static Color yellowShade500 = Colors.yellow.shade500;
+  static Color yellowShade400 = Colors.yellow.shade400;
+  static Color yellowShade300 = Colors.yellow.shade300;
+  static Color yellowShade200 = Colors.yellow.shade200;
+  static Color yellowShade100 = Colors.yellow.shade100;
+  static Color yellowShade50 = Colors.yellow.shade50;
 
   static const Color softOrange = Color(0xFFFF9680);
   static const Color lightGreen = Color(0xFFCCFF80);
@@ -55,16 +69,4 @@ class AppColors {
   static const Color deepOrange = Color(0xFFEF6C00);
   static const Color darkGreen = Color(0xFF2E7D32);
   static const Color charcoalGray = Color(0xFF424242);
-
-  // Categories colors
-  static const Color groceryColor = Color(0xFFCCFF80);
-  static const Color homeColor = Color(0xFFFFCC80);
-  static const Color workColor = Color(0xFFFF9680);
-  static const Color healthColor = Color(0xFF80FFA3);
-  static const Color sportsColor = Color(0xFF80FFFF);
-  static const Color socialColor = Color(0xFFFF80EB);
-  static const Color designColor = Color(0xFF80FFD9);
-  static const Color universityColor = Color(0xFF809CFF);
-  static const Color movieColor = Color(0xFF80D1FF);
-  static const Color musicColor = Color(0xFFFC80FF);
 }

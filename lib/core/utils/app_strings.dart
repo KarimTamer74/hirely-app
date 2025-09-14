@@ -3,9 +3,26 @@ class AppStrings {
   static const String home = 'Home';
   static const String dashboard = 'Dashboard';
   static const String add = 'Add';
+  static const String addApplication = 'Add Application';
   static const String applications = 'Applications';
   static const String profile = 'Profile';
   static const String logout = 'Logout';
+
+  //* common
+  static const String badRequestError = "bad_request_error";
+  static const String noContent = "no_content";
+  static const String forbiddenError = "forbidden_error";
+  static const String unauthorizedError = "unauthorized_error";
+  static const String notFoundError = "not_found_error";
+  static const String conflictError = "conflict_error";
+  static const String internalServerError = "internal_server_error";
+  static const String unknownError = "unknown_error";
+  static const String timeoutError = "timeout_error";
+  static const String defaultError =
+      "An error occurred, please try again later.";
+  static const String cacheError = "No Data Available";
+  static const String noInternetError = "No Internet Avaliable";
+  static const String success = "Success";
 
   //* Dashboard screen Strings
   static const String overview = 'Overview';
@@ -29,4 +46,16 @@ class AppStrings {
   static const String onSite = 'On-site';
 
   static const String search = 'Search';
+  static const String select = 'Select';
+  static const String date = 'Date';
+
+  //* Application Screen
+  static const String noApplicationsAvaliable = 'No Applications Avaliable';
+  static const String noResultsMatch = 'No results match your search';
+//  static const String
+//  static const String
+//  static const String
+
+  //* Add Application Screen
+  static const String tags = 'Tags';
 }

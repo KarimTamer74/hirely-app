@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/app_styles.dart';
+import 'package:hirely/core/utils/font_manager.dart';
+import 'package:hirely/core/utils/style_manager.dart';
 
 class AppTheme {
   static ThemeData get lightTheme => ThemeData(
@@ -23,9 +25,18 @@ class AppTheme {
               fontWeight: FontWeight.bold,
               color: AppColors.black),
         ),
+        buttonTheme: ButtonThemeData(minWidth: double.infinity),
         iconTheme: IconThemeData(color: AppColors.greyShade700),
+        chipTheme: ChipThemeData(
+            backgroundColor: AppColors.white,
+            selectedColor: AppColors.bluishClr,
+            disabledColor: AppColors.grayColor,
+            selectedShadowColor: AppColors.bluishClr,
+            labelStyle:
+                getMediumStyle(fontSize: FontSize.s16, color: AppColors.black),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(25))),
         inputDecorationTheme: InputDecorationTheme(
-          suffixIconColor: AppColors.workColor,
           hintStyle: AppStyles.greyTextStyle14,
           contentPadding:
               EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),

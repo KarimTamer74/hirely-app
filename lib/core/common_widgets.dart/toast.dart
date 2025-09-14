@@ -22,7 +22,7 @@ class ShowToast {
 
   static void show(
     String msg, {
-    Duration duration = const Duration(seconds: 2), // أقل شوية للموبايل
+    Duration duration = const Duration(seconds: 2), 
     Color backgroundColor = Colors.black87,
     Color textColor = Colors.white,
     SnackBarBehavior behavior = SnackBarBehavior.floating,
@@ -38,7 +38,7 @@ class ShowToast {
                   msg,
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 14, // أنسب للموبايل
+                    fontSize: 14, 
                   ),
                 ),
               ),
