@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hirely/core/common_widgets.dart/custom_error_widget.dart';
+import 'package:hirely/core/common_widgets.dart/custom_loading_indicator.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/recent_applications_card_item.dart';
 
@@ -13,7 +15,7 @@ class RecentApplicationsListView extends StatelessWidget {
     return BlocBuilder<JobsCubit, JobsState>(
       builder: (context, state) {
         if (state is GetRecentJobsLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return CustomLoadingIndicator();
         }
 
         if (state is GetRecentJobsFailure) {
@@ -26,7 +28,9 @@ class RecentApplicationsListView extends StatelessWidget {
           final recentJobs = state.recentJobs;
 
           if (recentJobs.isEmpty) {
-            return const Center(child: Text("No applications found"));
+            return const CustomErrorWidget(
+              message: "No applications found",
+            );
           }
 
           return ListView.builder(

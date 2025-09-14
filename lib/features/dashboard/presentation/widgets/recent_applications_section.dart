@@ -47,7 +47,10 @@ class RecentApplicationsSection extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 300.h, child: const RecentApplicationsListView())
+          SizedBox(
+            height: 300.h,
+            child: const RecentApplicationsListView(),
+          )
         ],
       ),
     );

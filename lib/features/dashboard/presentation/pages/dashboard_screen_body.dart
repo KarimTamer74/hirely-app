@@ -3,9 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hirely/core/common_widgets.dart/custom_error_widget.dart';
+import 'package:hirely/core/common_widgets.dart/custom_loading_indicator.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
 import 'package:hirely/core/network/job_model.dart';
 import 'package:hirely/core/utils/app_colors.dart';
+import 'package:hirely/core/utils/assets_manager.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/overview_section.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/recent_applications_section.dart';
 
@@ -26,14 +29,14 @@ class DashboardScreenBody extends StatelessWidget {
         builder: (context, state) {
           if (state is JobLoading) {
             log("Loading..........");
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return CustomLoadingIndicator();
           }
           if (state is JobFailure) {
             log("Error: ${state.message}");
-            return Center(
-              child: Text("Error ${state.message}"),
+            return CustomErrorWidget(
+              lottieAsset: LottieManager.errorLottie,
+              size: 300,
+              message: state.message,
             );
           }
           if (state is JobSuccess) {
@@ -44,9 +47,9 @@ class DashboardScreenBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20.h),
+                  20.verticalSpace,
                   OverviewSection(jobs: jobs),
-                  SizedBox(height: 20.h),
+                  20.verticalSpace,
                   RecentApplicationsSection(),
                 ],
               ),
