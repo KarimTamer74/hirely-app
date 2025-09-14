@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/common_widgets.dart/toast.dart';
-import 'package:hirely/core/network/services_locator.dart';
+import 'package:hirely/core/data/services_locator/services_locator.dart';
 import 'package:hirely/core/theme/app_colors.dart';
 import 'package:hirely/core/utils/font_manager.dart';
 import 'package:hirely/core/utils/style_manager.dart';

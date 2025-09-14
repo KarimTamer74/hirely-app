@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/common_widgets.dart/custom_card_widget.dart';
 import 'package:hirely/core/helper/enums.dart';
-import 'package:hirely/core/network/job_model.dart';
+import 'package:hirely/core/data/models/job_model/job_model.dart';
 import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/app_strings.dart';
 import 'package:hirely/core/utils/app_styles.dart';

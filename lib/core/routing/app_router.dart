@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
-import 'package:hirely/core/network/repo_impl.dart';
-import 'package:hirely/core/network/services_locator.dart';
+import 'package:hirely/core/data/repo/repo_impl.dart';
+import 'package:hirely/core/data/services_locator/services_locator.dart';
 import 'package:hirely/features/add_application/presentation/pages/add_application_screen.dart';
 import 'package:hirely/features/add_application/presentation/widgets/add_application_second_page.dart';
 import 'package:hirely/features/applications/presentation/pages/applications_screen.dart';

@@ -19,4 +19,4 @@ class AppInterceptors extends Interceptor {
  void onError(DioException err, ErrorInterceptorHandler handler) {
    super.onError(err, handler);
  }
-}
+} 

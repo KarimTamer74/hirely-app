@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/common_widgets.dart/custom_error_widget.dart';
 import 'package:hirely/core/common_widgets.dart/custom_loading_indicator.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
-import 'package:hirely/core/network/job_model.dart';
+import 'package:hirely/core/data/models/job_model/job_model.dart';
 import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/assets_manager.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/overview_section.dart';
@@ -51,6 +51,7 @@ class DashboardScreenBody extends StatelessWidget {
                   OverviewSection(jobs: jobs),
                   20.verticalSpace,
                   RecentApplicationsSection(),
+                  20.verticalSpace,
                 ],
               ),
             );

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hirely/core/common_widgets.dart/custom_error_widget.dart';
 import 'package:hirely/core/common_widgets.dart/custom_loading_indicator.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
-import 'package:hirely/features/dashboard/presentation/widgets/recent_applications_card_item.dart';
+import 'package:hirely/core/common_widgets.dart/applications_card_item.dart';
 
 class RecentApplicationsListView extends StatelessWidget {
   const RecentApplicationsListView({super.key});
@@ -38,7 +38,7 @@ class RecentApplicationsListView extends StatelessWidget {
             shrinkWrap: true,
             itemCount: recentJobs.length,
             itemBuilder: (context, index) {
-              return RecentApplicationsCardItem(
+              return ApplicationsCardItem(
                 application: recentJobs[index],
               );
             },

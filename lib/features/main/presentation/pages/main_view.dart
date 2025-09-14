@@ -2,6 +2,8 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/app_strings.dart';
+import 'package:hirely/features/add_application/presentation/pages/add_application_screen.dart';
+import 'package:hirely/features/applications/presentation/pages/applications_screen.dart';
 import 'package:hirely/features/dashboard/presentation/pages/dashboard_screen.dart';
 
 class MainView extends StatefulWidget {
@@ -22,10 +24,9 @@ class _MainViewState extends State<MainView> {
   }
 
   final List<TabItem> _navBarItems = [
-    const TabItem(
-        icon: Icons.settings_applications, title: AppStrings.applications),
-    const TabItem(icon: Icons.add, title: AppStrings.add),
     const TabItem(icon: Icons.dashboard, title: AppStrings.dashboard),
+    const TabItem(icon: Icons.add, title: AppStrings.add),
+    const TabItem(icon: Icons.description, title: AppStrings.applications)
   ];
 
   void _onTabSelected(int index) {
@@ -37,8 +38,8 @@ class _MainViewState extends State<MainView> {
   List<Widget> getBottomNavigationBarBody() {
     return const [
       DashboardScreen(),
-      DashboardScreen(),
-      DashboardScreen(),
+      AddApplicationScreen(),
+      ApplicationsScreen(),
     ];
   }
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hirely/core/common_widgets.dart/custom_card_widget.dart';
 import 'package:hirely/core/helper/functions_helper.dart';
-import 'package:hirely/core/network/job_model.dart';
+import 'package:hirely/core/data/models/job_model/job_model.dart';
 import 'package:hirely/core/utils/app_colors.dart';
 import 'package:hirely/core/utils/font_manager.dart';
 import 'package:hirely/core/utils/style_manager.dart';
 
-class RecentApplicationsCardItem extends StatelessWidget {
-  const RecentApplicationsCardItem({
+class ApplicationsCardItem extends StatelessWidget {
+  const ApplicationsCardItem({
     super.key,
     required this.application,
   });
