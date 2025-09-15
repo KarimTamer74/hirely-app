@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hirely/core/constants/app_constants.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
 import 'package:hirely/core/data/repo/repo_impl.dart';
 import 'package:hirely/core/data/services_locator/services_locator.dart';
+import 'package:hirely/core/utils/app_shared_preferences.dart';
 import 'package:hirely/features/add_application/presentation/pages/add_application_screen.dart';
 import 'package:hirely/features/add_application/presentation/widgets/add_application_second_page.dart';
 import 'package:hirely/features/applications/presentation/pages/applications_screen.dart';
@@ -15,11 +19,12 @@ import '../routing/routes.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
+    final pref = AppPreferences();
     switch (settings.name) {
       case Routes.splashScreen:
         return _createRoute(const SplashScreen());
       case Routes.onBoardingScreen:
-        return _createRoute(const OnboardingScreen());
+        return returnScreen(pref);
       case Routes.mainView:
         int? index = settings.arguments as int?;
         if (index != null) {
@@ -43,6 +48,16 @@ class AppRouter {
         ));
       default:
         return null;
+    }
+  }
+
+  PageRouteBuilder<dynamic> returnScreen(AppPreferences pref) {
+    bool isLogged = pref.getData(AppConstants.onBoardingKey) ?? false;
+    log("isLogged: $isLogged");
+    if (isLogged) {
+      return _createRoute(const MainView());
+    } else {
+      return _createRoute(const OnboardingScreen());
     }
   }
 

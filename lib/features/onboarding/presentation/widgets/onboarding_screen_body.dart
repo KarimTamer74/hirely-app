@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/common_widgets.dart/custom_elevated_button.dart';
+import 'package:hirely/core/constants/app_constants.dart';
 import 'package:hirely/core/routing/routes.dart';
 import 'package:hirely/core/utils/app_colors.dart';
+import 'package:hirely/core/utils/app_shared_preferences.dart';
 import 'package:hirely/core/utils/app_strings.dart';
 import 'package:hirely/features/onboarding/presentation/widgets/onboarding_content.dart';
 
@@ -41,7 +43,9 @@ class OnBoardingScreenBody extends StatelessWidget {
             child: CustomElevatedButton(
               backgroundColor: AppColors.deepOrange,
               text: AppStrings.getStarted,
-              onPressed: () {
+              onPressed: () async {
+                final pref = AppPreferences();
+                await pref.setData(AppConstants.onBoardingKey, true);
                 Navigator.pushNamedAndRemoveUntil(
                     context, Routes.mainView, (_) => false);
               },
