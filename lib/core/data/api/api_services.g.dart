@@ -2,6 +2,8 @@
 
 part of 'api_services.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -101,3 +103,5 @@ class _ApiServices implements ApiServices {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on
