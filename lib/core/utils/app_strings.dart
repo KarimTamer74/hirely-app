@@ -8,6 +8,11 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String logout = 'Logout';
 
+  //* onBoarding
+  static const String onBoardingTitle = 'Manage Applications';
+  static const String onBoardingDescription =
+      'Easily track and organize your job applicaions in one place';
+  static const String getStarted = 'Get Started';
   //* common
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";
