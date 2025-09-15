@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hirely/core/common_widgets.dart/toast.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
 import 'package:hirely/core/data/services_locator/services_locator.dart';
-import 'package:hirely/features/main/presentation/pages/main_view.dart';
+import 'package:hirely/features/onboarding/presentation/screens/onboarding_screen.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/routing/app_router.dart';
@@ -30,7 +30,7 @@ class Hirely extends StatelessWidget {
             theme: AppTheme.lightTheme,
             onGenerateRoute: appRouter.generateRoute,
             initialRoute: '/',
-            home: MainView(),
+            home: OnboardingScreen(),
           ),
         );
       },
