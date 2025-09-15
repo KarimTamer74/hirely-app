@@ -2,28 +2,39 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hirely/core/common_widgets.dart/custom_drop_down_menu.dart';
+import 'package:hirely/core/common_widgets.dart/custom_drop_down_text_field.dart';
 import 'package:hirely/core/helper/enums.dart';
+import 'package:hirely/core/utils/app_strings.dart';
 
-class JobOptionsRow extends StatelessWidget {
+class JobOptionsRow extends StatefulWidget {
   const JobOptionsRow({
     super.key,
     required this.selectedJobModeItem,
     required this.selectedJobTypeItem,
   });
+
   final Function(dynamic) selectedJobModeItem;
   final Function(dynamic) selectedJobTypeItem;
 
-  static List<DropdownMenuEntry> jobTypeEntries = [
-    DropdownMenuEntry(value: JobType.fullTime, label: 'Full Time'),
-    DropdownMenuEntry(value: JobType.partTime, label: 'Part Time'),
-    DropdownMenuEntry(value: JobType.intern, label: 'Internship'),
-    DropdownMenuEntry(value: JobType.freelance, label: 'Freelance')
+  @override
+  State<JobOptionsRow> createState() => _JobOptionsRowState();
+}
+
+class _JobOptionsRowState extends State<JobOptionsRow> {
+  dynamic _selectedJobType;
+  dynamic _selectedJobMode;
+
+  static List<DropdownMenuItem> jobTypeItems = [
+    DropdownMenuItem(value: JobType.fullTime, child: Text('Full Time')),
+    DropdownMenuItem(value: JobType.partTime, child: Text('Part Time')),
+    DropdownMenuItem(value: JobType.intern, child: Text('Internship')),
+    DropdownMenuItem(value: JobType.freelance, child: Text('Freelance')),
   ];
-  static List<DropdownMenuEntry> jobModeEntries = [
-    DropdownMenuEntry(value: JobMode.onSite, label: 'OnSite'),
-    DropdownMenuEntry(value: JobMode.remote, label: 'Remotely'),
-    DropdownMenuEntry(value: JobMode.hybrid, label: 'Hybrid'),
+
+  static List<DropdownMenuItem> jobModeItems = [
+    DropdownMenuItem(value: JobMode.onSite, child: Text('OnSite')),
+    DropdownMenuItem(value: JobMode.remote, child: Text('Remotely')),
+    DropdownMenuItem(value: JobMode.hybrid, child: Text('Hybrid')),
   ];
 
   @override
@@ -31,29 +42,36 @@ class JobOptionsRow extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: CustomDropDownMenu(
-            label: 'Job Type',
-            entries: jobTypeEntries,
-            selectedItem: (selectedItem) {
-              selectedJobTypeItem(selectedItem);
-
-              log("selectedJobTypeItem===$selectedItem");
+          child: CustomDropDownTextField(
+            items: jobTypeItems,
+            value: _selectedJobType,
+            hintText: AppStrings.jobType,
+            selectedItem: (value) {
+              setState(() {
+                _selectedJobType = value;
+              });
+              widget.selectedJobTypeItem(value);
+              log("selectedJobType===$value");
             },
           ),
         ),
+
         10.horizontalSpace,
+
         Expanded(
-          child: CustomDropDownMenu(
-            label: 'Job Mode',
-            entries: jobModeEntries,
-            selectedItem: (selectedItem) {
-              selectedJobModeItem(selectedItem);
-              log("selectedJobModeItem===$selectedItem");
+          child: CustomDropDownTextField(
+            items: jobModeItems,
+            value: _selectedJobMode,
+            hintText: AppStrings.jobMode,
+            selectedItem: (value) {
+              setState(() {
+                _selectedJobMode = value;
+              });
+              widget.selectedJobModeItem(value);
+              log("selectedJobMode===$value");
             },
           ),
         ),
-
-        // CustomDropDownTextField()
       ],
     );
   }
