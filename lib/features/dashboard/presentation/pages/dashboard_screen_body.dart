@@ -8,7 +8,6 @@ import 'package:hirely/core/common_widgets.dart/custom_loading_indicator.dart';
 import 'package:hirely/core/cubit/job_cubit/jobs_cubit.dart';
 import 'package:hirely/core/data/models/job_model/job_model.dart';
 import 'package:hirely/core/utils/app_colors.dart';
-import 'package:hirely/core/utils/assets_manager.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/overview_section.dart';
 import 'package:hirely/features/dashboard/presentation/widgets/recent_applications_section.dart';
 
@@ -34,9 +33,10 @@ class DashboardScreenBody extends StatelessWidget {
           if (state is JobFailure) {
             log("Error: ${state.message}");
             return CustomErrorWidget(
-              lottieAsset: LottieManager.errorLottie,
-              size: 300,
               message: state.message,
+              onRetry: () {
+                context.read<JobsCubit>().fetchJobs();
+              },
             );
           }
           if (state is JobSuccess) {

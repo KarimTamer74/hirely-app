@@ -13,22 +13,23 @@ class AppStrings {
   static const String onBoardingDescription =
       'Easily track and organize your job applicaions in one place';
   static const String getStarted = 'Get Started';
+
   //* common
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";
   static const String forbiddenError = "forbidden_error";
-  static const String unauthorizedError = "unauthorized_error";
+  static const String unauthorizedError = "Unauthorized Error";
   static const String notFoundError = "not_found_error";
   static const String conflictError = "conflict_error";
-  static const String internalServerError = "internal_server_error";
-  static const String unknownError = "unknown_error";
-  static const String timeoutError = "timeout_error";
+  static const String internalServerError = "Internal Server Error";
+  static const String unknownError = "Unknown Error";
+  static const String timeoutError = "Timeout Error";
   static const String defaultError =
       "An error occurred, please try again later.";
   static const String cacheError = "No Data Available";
   static const String noInternetError = "No Internet Avaliable";
   static const String success = "Success";
-
+  static const String fieldCanNotBeEmpty = 'Please fill this field';
   //* Dashboard screen Strings
   static const String overview = 'Overview';
   static const String totalApplications = 'Total Applications';
@@ -46,6 +47,7 @@ class AppStrings {
   static const String seeAll = 'See All';
 
   static const String jobType = 'Job Type';
+  static const String jobMode = 'Job Mode';
   static const String remote = 'Remote';
   static const String hybrid = 'Hybrid';
   static const String onSite = 'On-site';
@@ -57,7 +59,7 @@ class AppStrings {
   //* Application Screen
   static const String noApplicationsAvaliable = 'No Applications Avaliable';
   static const String noResultsMatch = 'No results match your search';
-//  static const String
+  static const String retry = 'Retry';
 //  static const String
 //  static const String
 
