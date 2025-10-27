@@ -18,7 +18,7 @@ class ApplicationsListViewWidget extends StatelessWidget {
 
   final String searched;
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: BlocBuilder<JobsCubit, JobsState>(
@@ -26,7 +26,12 @@ class ApplicationsListViewWidget extends StatelessWidget {
           if (state is JobLoading) {
             return const CustomLoadingIndicator();
           } else if (state is JobFailure) {
-            return CustomErrorWidget(message: state.message);
+            return CustomErrorWidget(
+              message: state.message,
+              onRetry: () {
+                context.read<JobsCubit>().fetchJobs();
+              },
+            );
           } else if (state is JobSuccess) {
             final jobs = state.job;
 

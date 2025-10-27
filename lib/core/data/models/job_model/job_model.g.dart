@@ -7,7 +7,7 @@ part of 'job_model.dart';
 // **************************************************************************
 
 JobModel _$JobModelFromJson(Map<String, dynamic> json) => JobModel(
-      id: (json['id'] as num?)?.toInt(),
+      id: json['id'] == null ? null : json['id'].toString().trim(),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -28,7 +28,6 @@ JobModel _$JobModelFromJson(Map<String, dynamic> json) => JobModel(
     );
 
 Map<String, dynamic> _$JobModelToJson(JobModel instance) => <String, dynamic>{
-      'id': instance.id,
       'created_at': instance.createdAt?.toIso8601String(),
       'title': instance.title,
       'company': instance.company,

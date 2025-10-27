@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hirely/core/helper/enums.dart';
 import 'package:hirely/core/data/models/job_model/job_model.dart';
 import 'package:hirely/core/data/repo/repo.dart';
+import 'package:hirely/core/helper/enums.dart';
 
 part 'jobs_state.dart';
 
@@ -81,19 +81,19 @@ class JobsCubit extends Cubit<JobsState> {
     String? tags,
     String? cvUrl,
   }) async {
-    emit(JobLoading());
+    emit(AddJobLoading());
 
     final job = JobModel(
-      title: title ?? 'ffffffff',
-      company: company ?? 'fffff',
-      location: location ?? 'ffffff',
-      jobMode: jobMode ?? JobMode.onSite,
+      title: title ?? 'Flutter',
+      company: company ?? 'company',
+      location: location ?? 'Tanta',
+      jobMode: jobMode ?? JobMode.hybrid,
       jobType: jobType ?? JobType.fullTime,
-      postLink: postLink ?? 'eee',
-      date: date,
-      notes: notes,
-      tags: tags,
-      cvUrl: cvUrl,
+      postLink: postLink ?? 'postLink',
+      date: DateTime.now(),
+      notes: "NOOOOOOOOOOOOOO",
+      tags: "tags",
+      cvUrl: "cvUrl",
     );
 
     final result = await repo.insertJobs(job: job);

@@ -3,9 +3,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'job_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class JobModel {
-  final int? id;
+  final String? id;
 
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
@@ -50,9 +50,9 @@ class JobModel {
   });
 
   /// fromJson
-  factory JobModel.fromJson(Map<String, dynamic> json) => _$JobModelFromJson(json);
+  factory JobModel.fromJson(Map<String, dynamic> json) =>
+      _$JobModelFromJson(json);
 
   /// toJson
   Map<String, dynamic> toJson() => _$JobModelToJson(this);
 }
-

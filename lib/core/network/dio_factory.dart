@@ -8,7 +8,7 @@ class DioFactory {
   Dio get dio => _dio;
   DioFactory() : _dio = Dio() {
     _dio.options
-      ..connectTimeout = Duration(minutes: 1)
+      ..connectTimeout = Duration(seconds: 30)
       ..sendTimeout = Duration(minutes: 1)
       ..receiveTimeout = Duration(minutes: 1)
       ..headers = {

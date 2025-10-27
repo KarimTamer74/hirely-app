@@ -114,16 +114,16 @@ class _AddApplicationSecondPageState extends State<AddApplicationSecondPage> {
                 ),
                 BlocConsumer<JobsCubit, JobsState>(
                   listener: (context, state) {
-                    if (state is JobLoading) {
+                    if (state is AddJobLoading) {
                       log("Loading", name: "Job Loading State");
                       isLoading = true;
-                    } else if (state is JobFailure) {
+                    } else if (state is AddJobFailure) {
                       isLoading = false;
 
                       log("Failure: ${state.message}",
                           name: "Job Failure State");
                       ShowToast.showError(state.message);
-                    } else if (state is JobSuccess) {
+                    } else if (state is AddJobSuccess) {
                       log("Success", name: "Job Success State");
                       isLoading = false;
                       ShowToast.showSuccess("Job Added Successfully");

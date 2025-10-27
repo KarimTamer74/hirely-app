@@ -29,7 +29,7 @@ class _AddApplicationFirstPageState extends State<AddApplicationFirstPage> {
   final TextEditingController postLinkController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController notesController = TextEditingController();
-
+  final GlobalKey<FormState> _formKey = GlobalKey();
   @override
   void dispose() {
     jobTitleController.dispose();
@@ -44,54 +44,66 @@ class _AddApplicationFirstPageState extends State<AddApplicationFirstPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 20.h,
-        children: [
-          30.verticalSpace,
-          CustomTextFormField(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 20.h,
+          children: [
+            30.verticalSpace,
+            CustomTextFormField(
               lableText: 'Job Title',
               hintText: 'Enter job title',
-              controller: jobTitleController),
-          CustomTextFormField(
+              controller: jobTitleController,
+              isValidate: true,
+            ),
+            CustomTextFormField(
               lableText: 'Company',
               hintText: 'Enter company name',
-              controller: companyController),
-          JobOptionsRow(selectedJobModeItem: (selectedItem) {
-            setState(() {
-              selectedJobModeItem = selectedItem;
-            });
-            log("selectedJobModeItem===$selectedItem");
-          }, selectedJobTypeItem: (selectedItem) {
-            setState(() {
-              selectedJobTypeItem = selectedItem;
-            });
-          }),
-          CustomTextFormField(
-              lableText: 'Location',
-              hintText: 'Enter Location',
-              controller: locationController),
-          CustomTextFormField(
-              lableText: 'Post Link',
-              hintText: "Enter post link",
-              controller: postLinkController),
-          20.verticalSpace,
-          CustomElevatedButton(
-            text: "Next",
-            onPressed: () {
-              context.read<JobsCubit>().saveFirstPageData(
-                    title: jobTitleController.text,
-                    company: companyController.text,
-                    location: locationController.text,
-                    jobMode: selectedJobModeItem,
-                    jobType: selectedJobTypeItem,
-                    postLink: postLinkController.text,
+              controller: companyController,
+              isValidate: true,
+            ),
+            JobOptionsRow(selectedJobModeItem: (selectedItem) {
+              setState(() {
+                selectedJobModeItem = selectedItem;
+              });
+              log("selectedJobModeItem===$selectedItem");
+            }, selectedJobTypeItem: (selectedItem) {
+              setState(() {
+                selectedJobTypeItem = selectedItem;
+              });
+            }),
+            CustomTextFormField(
+                lableText: 'Location',
+                hintText: 'Enter Location',
+                controller: locationController),
+            CustomTextFormField(
+                lableText: 'Post Link',
+                hintText: "Enter post link",
+                controller: postLinkController),
+            20.verticalSpace,
+            CustomElevatedButton(
+              text: "Next",
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<JobsCubit>().saveFirstPageData(
+                        title: jobTitleController.text,
+                        company: companyController.text,
+                        location: locationController.text,
+                        jobMode: selectedJobModeItem,
+                        jobType: selectedJobTypeItem,
+                        postLink: postLinkController.text,
+                      );
+                  log(
+                    "in first Page data= title:${jobTitleController.text}, company:${companyController.text}, location:${locationController.text}, jobMode:${selectedJobModeItem}, jobType:${selectedJobTypeItem}, postLink:${postLinkController.text}",
                   );
-
-              Navigator.pushNamed(context, Routes.addApplicationSecondScreen);
-            },
-          ),
-        ],
+                  Navigator.pushNamed(
+                      context, Routes.addApplicationSecondScreen);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

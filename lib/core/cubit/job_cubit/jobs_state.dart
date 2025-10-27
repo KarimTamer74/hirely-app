@@ -9,6 +9,8 @@ class JobInitial extends JobsState {}
 
 class JobLoading extends JobsState {}
 
+class AddJobLoading extends JobsState {}
+
 class GetRecentJobsLoading extends JobsState {}
 
 class JobSuccess extends JobsState {
